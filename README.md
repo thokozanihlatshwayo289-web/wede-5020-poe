@@ -1,8 +1,8 @@
 # Checkers Website Project
 
 ## Student Information
-**Student number:** Your student number <br>
-**Student Name:** Your full name
+**Student number:** ST10540859 <br>
+**Student Name:** Thokozani Hlatshwayo
 
 ## Project Overview
 Checkers is a retail website prototype for a supermarket brand. The website showcases the company profile, services, products, and contact information while using responsive design and modern visual styling.
