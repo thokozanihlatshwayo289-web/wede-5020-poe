@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkers - Home</title>
     <meta name="description" content="Checkers supermarket - affordable prices, fresh products, nationwide stores.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="" crossorigin="" />
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" crossorigin="" />
 </head>
 
 <body>
 
 <header>
     <nav>
-        <img src="img/checkers_logo.png" alt="Checkers Logo">
+        <img src="img/checkers_logo.png" alt="Checkers Logo" loading="lazy">
 
         <a href="index.html">Home</a>
         <a href="About us.html">About us</a>
@@ -36,7 +38,7 @@
 
     <hr>
 
-          <img class="hero-img" src="img/food.jpg" alt="Food" srcset="img/food.jpg 1200w, img/food.jpg 600w" sizes="(max-width: 640px) 100vw, 720px">
+          <img class="hero-img" src="img/food.jpg" alt="Food" srcset="img/food.jpg 1200w, img/food.jpg 600w" sizes="(max-width: 640px) 100vw, 720px" loading="lazy">
 
     <h2>Why Shop With Us?</h2>
 
@@ -124,8 +126,8 @@
 </footer>
  
  <!-- Scripts -->
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
- <script src="js/main.js"></script>
+ <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script defer src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+ <script defer src="js/main.min.js"></script>
  </body>
  </html>
