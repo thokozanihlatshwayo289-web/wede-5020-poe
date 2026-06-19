@@ -1,0 +1,5 @@
+.product img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:.6rem;display:block}
+.hero-img{aspect-ratio:16/9;object-fit:cover}
+.lb-overlay{opacity:0;transition:opacity .18s ease}
+.lb-overlay.show{opacity:1}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
