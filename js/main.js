@@ -1,0 +1,111 @@
+$(function(){
+    $('.accordion-toggle').on('click', function(){
+        $(this).next('.accordion-content').slideToggle(200);
+        $(this).toggleClass('open');
+    });
+
+    $('body').on('click', '.lightbox-link', function(e){
+        e.preventDefault();
+        var src = $(this).find('img').attr('src');
+        var alt = $(this).find('img').attr('alt') || '';
+        var $overlay = $('<div class="lb-overlay"></div>');
+        var $img = $('<img class="lb-img" src="'+src+'" alt="'+alt+'"/>');
+        $overlay.append($img).appendTo('body').fadeIn(200);
+        $overlay.on('click', function(){
+            $overlay.fadeOut(150, function(){ $overlay.remove(); });
+        });
+    });
+
+    if ($('#map').length && typeof L !== 'undefined'){
+        var map = L.map('map').setView([-25.7517898,28.2209137],13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            maxZoom:19,
+        }).addTo(map);
+        L.marker([-25.7517898,28.2209137]).addTo(map);
+    }
+
+    $('#search-input').on('input', function(){
+        var q = $(this).val().toLowerCase();
+        $('.products .product').each(function(){
+            var text = $(this).text().toLowerCase();
+            $(this).toggle(text.indexOf(q) !== -1);
+        });
+    });
+
+    // Tabs
+    $('.tab').on('click', function(){
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+        var t = $(this).data('target');
+        $('#products-list, #services-list').hide();
+        $('#'+t).show();
+    });
+
+    // Modal details
+    $('body').on('click', '.btn-detail', function(){
+        var $p = $(this).closest('.product');
+        var title = $p.find('h3').text();
+        var desc = $p.find('p').first().text();
+        var price = $p.find('.price').text();
+        var $overlay = $('<div class="modal-overlay"></div>');
+        var $modal = $('<div class="modal"><h3>'+title+'</h3><p>'+desc+'</p><p class="price">'+price+'</p><div style="text-align:right;margin-top:1rem;"><button class="close-modal">Close</button></div></div>');
+        $overlay.append($modal).appendTo('body');
+        $overlay.on('click', function(e){ if (e.target === this) $overlay.remove(); });
+        $overlay.find('.close-modal').on('click', function(){ $overlay.remove(); });
+    });
+
+    $('form#contact-form').on('submit', function(e){
+        e.preventDefault();
+        var $f = $(this);
+        if (!$f[0].checkValidity()){
+            $f.find(':invalid').first().focus();
+            return;
+        }
+        var useAjax = !!$f.find('[name="use_ajax"]:checked').length;
+        var name = $.trim($f.find('[name="name"]').val());
+        var email = $.trim($f.find('[name="email"]').val());
+        var message = $.trim($f.find('[name="message"]').val());
+        var recipient = $f.data('recipient') || 'info@checkers.co.za';
+        if (useAjax){
+            fetch('https://httpbin.org/post', {
+                method: 'POST', headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({name:name,email:email,message:message,to:recipient})
+            }).then(function(res){ return res.json(); }).then(function(){
+                if (!$('#contact-result').length) $f.after('<div id="contact-result" class="product" style="margin-top:1rem;">Message sent (simulated).</div>');
+                else $('#contact-result').text('Message sent (simulated).');
+            }).catch(function(){
+                if (!$('#contact-result').length) $f.after('<div id="contact-result" class="product" style="margin-top:1rem;">Error sending message.</div>');
+                else $('#contact-result').text('Error sending message.');
+            });
+        } else {
+            var subject = encodeURIComponent('Website contact from '+name);
+            var body = encodeURIComponent('Name: '+name+"\nEmail: "+email+"\n\n"+message);
+            window.location.href = 'mailto:'+recipient+'?subject='+subject+'&body='+body;
+        }
+    });
+
+    $('form#enquiry-form').on('submit', function(e){
+        e.preventDefault();
+        var $f = $(this);
+        if (!$f[0].checkValidity()){
+            $f.find(':invalid').first().focus();
+            return;
+        }
+        var type = $f.find('[name="enquiry_type"]').val();
+        var qty = parseInt($f.find('[name="quantity"]').val()||1,10);
+        var cost = 0;
+        if (type === 'product') cost = qty * 49.99;
+        else if (type === 'service') cost = qty * 199.00;
+        else cost = 0;
+        var avail = (Math.random() > 0.3) ? 'Available' : 'Limited availability';
+        var $result = $('#enquiry-result');
+        if (!$result.length){
+            $result = $('<div id="enquiry-result" class="product" style="margin-top:1rem;"></div>').insertAfter($f);
+        }
+        $result.html('<h3>Enquiry result</h3><p>Status: '+avail+'</p><p>Estimated cost: R'+cost.toFixed(2)+'</p>');
+    });
+});
+
+// minimal lightbox styles
+var lbCss = '\n.lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999}\n.lb-img{max-width:90%;max-height:90%;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}\n';
+var styleEl = document.createElement('style'); styleEl.appendChild(document.createTextNode(lbCss)); document.head.appendChild(styleEl);

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkers - Enquiry</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Enquire about products, services, volunteering or sponsorship opportunities at Checkers.">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <img src="img/checkers_logo.png" alt="Checkers Logo">
+
+        <a href="index.html">Home</a>
+        <a href="About us.html">About us</a>
+        <a href="Services.html">Services</a>
+        <a href="Products.html">Products</a>
+        <a href="Contact us.html">Contact us</a>
+    </nav>
+    <hr>
+</header>
+
+
+<main>
+
+    <h1>Enquiry</h1>
+
+    <p>Please use this form to enquire about product availability, service bookings, volunteering, or sponsorships.</p>
+
+    <hr>
+
+    <form id="enquiry-form">
+        <label>Your Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Enquiry Type:</label>
+        <select name="enquiry_type" required>
+            <option value="product">Product</option>
+            <option value="service">Service</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="sponsor">Sponsor</option>
+        </select>
+
+        <label>Quantity / People:</label>
+        <input type="number" name="quantity" min="1" value="1">
+
+        <label>Preferred Date (optional):</label>
+        <input type="date" name="preferred_date">
+
+        <button type="submit">Get Enquiry Response</button>
+    </form>
+
+</main>
+
+
+<footer>
+    <hr>
+    <p>&copy; 2026 Checkers. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

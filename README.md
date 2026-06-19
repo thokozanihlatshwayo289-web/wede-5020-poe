@@ -37,3 +37,11 @@ Checkers is a retail website prototype for a supermarket brand. The website show
 - Mozilla Developer Network. "CSS Grid Layout". https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 - Mozilla Developer Network. "Responsive images". https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
 - Mozilla Developer Network. "Using media queries". https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
+
+## Part 3 Enhancements
+
+- Added interactive demo: accordion, lightbox gallery, search filter, and Leaflet map.
+- Implemented `enquiry.html` and enhanced contact form with client-side validation and mailto-based submission.
+- Added `robots.txt` and `sitemap.xml` for basic SEO.
+- Added `js/main.js` with handlers for interactive features and `css` updates where needed.
+

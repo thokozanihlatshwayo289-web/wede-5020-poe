@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkers - Home</title>
+    <meta name="description" content="Checkers supermarket - affordable prices, fresh products, nationwide stores.">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="" crossorigin="" />
 </head>
 
 <body>
@@ -53,6 +55,66 @@
         We promise to deliver value, quality, and convenience to every customer, every day.
     </p>
 
+    <section id="interactive">
+        <h2>Explore More</h2>
+
+        <div class="accordion">
+            <button class="accordion-toggle">Current Promotions</button>
+            <div class="accordion-content" style="display:none;">We run weekly promotions on fresh produce and household staples. Check back regularly for the latest deals.</div>
+        </div>
+
+        <div class="gallery">
+            <a href="#" class="lightbox-link"><img src="img/food.jpg" alt="Food showcase"></a>
+        </div>
+
+        <div class="tabs" style="margin-top:1rem;">
+            <button class="tab active" data-target="products-list">Products</button>
+            <button class="tab" data-target="services-list">Services</button>
+        </div>
+
+        <div id="products-list" class="products" style="margin-top:1rem;">
+            <div class="product" data-category="grocery">
+                <h3>Fresh Apples</h3>
+                <p>1kg bag of crisp apples.</p>
+                <p class="price">R29.99</p>
+                <button class="btn-detail">View</button>
+            </div>
+            <div class="product" data-category="grocery">
+                <h3>Bread Loaf</h3>
+                <p>Whole wheat bread.</p>
+                <p class="price">R12.50</p>
+                <button class="btn-detail">View</button>
+            </div>
+            <div class="product" data-category="household">
+                <h3>Dish Soap</h3>
+                <p>750ml concentrated cleaner.</p>
+                <p class="price">R24.00</p>
+                <button class="btn-detail">View</button>
+            </div>
+        </div>
+
+        <div id="services-list" class="products" style="display:none;margin-top:1rem;">
+            <div class="product" data-category="service">
+                <h3>Home Delivery</h3>
+                <p>Next-day delivery service.</p>
+                <p class="price">R49.00</p>
+                <button class="btn-detail">View</button>
+            </div>
+            <div class="product" data-category="service">
+                <h3>Instore Catering</h3>
+                <p>Party platters and catering.</p>
+                <p class="price">R499.00</p>
+                <button class="btn-detail">View</button>
+            </div>
+        </div>
+
+        <div id="map" style="height:300px; margin-top:1rem;"></div>
+
+        <div class="search-section">
+            <input id="search-input" placeholder="Search products or services..." />
+        </div>
+    </section>
+
 </main>
 
 
@@ -60,6 +122,10 @@
     <hr>
     <p>&copy; 2026 Checkers. All rights reserved.</p>
 </footer>
-
-</body>
-</html>
+ 
+ <!-- Scripts -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+ <script src="js/main.js"></script>
+ </body>
+ </html>

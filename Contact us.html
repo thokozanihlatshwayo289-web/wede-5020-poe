@@ -39,15 +39,17 @@
 
     <h2>Send a Message</h2>
 
-    <form>
+    <form id="contact-form" data-recipient="info@checkers.co.za">
         <label>Name:</label><br>
-        <input type="text" name="name"><br><br>
+        <input type="text" name="name" required><br><br>
 
         <label>Email:</label><br>
-        <input type="email" name="email"><br><br>
+        <input type="email" name="email" required><br><br>
 
         <label>Message:</label><br>
-        <textarea name="message" rows="5"></textarea><br><br>
+        <textarea name="message" rows="5" required></textarea><br><br>
+
+        <label><input type="checkbox" name="use_ajax"> Send via AJAX (simulated)</label><br><br>
 
         <button type="submit">Send</button>
     </form>
@@ -66,3 +68,5 @@
 
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/main.js"></script>

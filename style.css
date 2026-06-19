@@ -167,6 +167,40 @@ li {
     box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
 }
 
+/* Accordion */
+.accordion-toggle {
+    width: 100%;
+    text-align: left;
+    background: linear-gradient(90deg, var(--surface), #f8fafc);
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+.accordion-toggle.open {
+    box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+}
+.accordion-content {
+    padding: 0.85rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 0.6rem;
+    background: #fff;
+    animation: fadeIn 220ms ease;
+}
+
+/* Tabs */
+.tabs { display:flex; gap:0.5rem; }
+.tab { padding:0.6rem 0.9rem; border-radius:999px; background:transparent; cursor:pointer; border:1px solid transparent; }
+.tab.active { background:var(--primary); color:#fff; }
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:1200}
+.modal { background:var(--surface); padding:1.25rem; border-radius:12px; max-width:720px; width:95%; box-shadow:var(--shadow); }
+
+/* Small animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+
 .product h3 {
     margin: 0.85rem 0 0.55rem;
     font-size: 1.15rem;
