@@ -55,7 +55,6 @@ $(function(){
     });
 
     $('form#contact-form').on('submit', function(e){
-        e.preventDefault();
         var $f = $(this);
         if (!$f[0].checkValidity()){
             $f.find(':invalid').first().focus();
@@ -66,6 +65,12 @@ $(function(){
         var email = $.trim($f.find('[name="email"]').val());
         var message = $.trim($f.find('[name="message"]').val());
         var recipient = $f.data('recipient') || 'info@checkers.co.za';
+        // If using Netlify forms, allow normal submission (do not intercept)
+        if ($f.attr('data-netlify') && !useAjax) {
+            return; // let Netlify handle the post
+        }
+        // Only prevent default when using AJAX or when no server handling is present
+        e.preventDefault();
         if (useAjax){
             fetch('https://httpbin.org/post', {
                 method: 'POST', headers: {'Content-Type':'application/json'},
@@ -85,12 +90,16 @@ $(function(){
     });
 
     $('form#enquiry-form').on('submit', function(e){
-        e.preventDefault();
         var $f = $(this);
         if (!$f[0].checkValidity()){
             $f.find(':invalid').first().focus();
             return;
         }
+        // If using Netlify forms, allow normal submission
+        if ($f.attr('data-netlify')){
+            return; // Netlify will handle
+        }
+        e.preventDefault();
         var type = $f.find('[name="enquiry_type"]').val();
         var qty = parseInt($f.find('[name="quantity"]').val()||1,10);
         var cost = 0;

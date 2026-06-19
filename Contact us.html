@@ -43,7 +43,8 @@
 
     <h2>Send a Message</h2>
 
-    <form id="contact-form" data-recipient="info@checkers.co.za">
+    <form id="contact-form" name="contact" data-netlify="true" method="POST" action="/thanks.html" data-recipient="info@checkers.co.za">
+        <input type="hidden" name="form-name" value="contact">
         <label>Name:</label><br>
         <input type="text" name="name" required><br><br>
 

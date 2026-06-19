@@ -45,3 +45,9 @@ Checkers is a retail website prototype for a supermarket brand. The website show
 - Added `robots.txt` and `sitemap.xml` for basic SEO.
 - Added `js/main.js` with handlers for interactive features and `css` updates where needed.
 
+## Deployment & Forms
+
+- Live (GitHub Pages): https://thokozanihlatshwayo289-web.github.io/wede-5020-poe/
+- Netlify CI workflow and `netlify.toml` included. To enable Netlify Forms, add `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` to GitHub secrets or connect the repo directly in Netlify.
+- Contact and enquiry forms are configured to work with Netlify Forms (added `data-netlify="true"` and `form-name` hidden inputs). If you prefer Formspree, I can switch them.
+

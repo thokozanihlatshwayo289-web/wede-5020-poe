@@ -36,7 +36,8 @@
 
     <hr>
 
-    <form id="enquiry-form">
+    <form id="enquiry-form" name="enquiry" data-netlify="true" method="POST" action="/thanks.html">
+        <input type="hidden" name="form-name" value="enquiry">
         <label>Your Name:</label>
         <input type="text" name="name" required>
 
